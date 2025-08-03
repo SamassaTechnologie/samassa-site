@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Document d'intervention - Samassa Technologie</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f8f8f8;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    h1 {
+      color: #0466c8;
+    }
+    .intervention-box {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      max-width: 800px;
+      margin: auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    label {
+      font-weight: bold;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    button {
+      background-color: #0466c8;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 15px;
+    }
+    button:hover {
+      background-color: #0353a4;
+    }
+    .actions {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Document d'Intervention</h1>
+    <p>Samassa Technologie - Tout pour l'informatique</p>
+  </header>
+
+  <div class="intervention-box">
+    <form id="interventionForm">
+      <label>Nom du client</label>
+      <input type="text" name="client" required />
+
+      <label>Date de l’intervention</label>
+      <input type="date" name="date" required />
+
+      <label>Détails de l’intervention</label>
+      <textarea name="details" rows="5"></textarea>
+
+      <label>Nom du technicien</label>
+      <input type="text" name="technicien" required />
+
+      <div class="actions">
+        <button type="submit">Générer le document</button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById("interventionForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      alert("Le document d’intervention a été généré (fonction export PDF à venir) !");
+    });
+  </script>
+
+</body>
+</html>
