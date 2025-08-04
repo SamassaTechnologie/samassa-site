@@ -5,19 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Facture - Samassa Technologie</title>
   <style>
+    @media print {
+      .btn-imprimer {
+        display: none !important;
+      }
+    }
     body {
-      font-family: Arial, sans-serif;
+      font-family: Cambria, serif;
       margin: 40px;
       color: #000;
       position: relative;
+      width: 210mm;
+      height: 297mm;
+      padding: 20px;
+      box-sizing: border-box;
     }
     body::before {
       content: "";
       position: fixed;
-      top: 30%;
+      top: 50%;
       left: 50%;
-      width: 400px;
-      height: 400px;
+      width: 500px;
+      height: 500px;
       background-image: url('samassa-logo.png');
       background-size: contain;
       background-repeat: no-repeat;
@@ -34,21 +43,25 @@
     .header {
       display: flex;
       justify-content: space-between;
-      align-items: center;
+      align-items: flex-start;
       border-bottom: 2px solid #000;
       padding-bottom: 10px;
       margin-bottom: 20px;
     }
-    .logo {
-      max-width: 150px;
-    }
     .entreprise-info {
-      text-align: right;
       font-size: 14px;
+      line-height: 1.6;
+      text-align: left;
+    }
+    .header img {
+      max-width: 120px;
+      height: auto;
+      margin-left: auto;
     }
     h1 {
       text-align: center;
       margin-top: 20px;
+      font-weight: bold;
     }
     .facture-details, .client {
       margin: 20px 0;
@@ -91,6 +104,10 @@
       text-align: right;
       font-size: 16px;
     }
+    .signature p:first-child {
+      font-weight: bold;
+      text-decoration: underline;
+    }
     .footer {
       margin-top: 60px;
       font-size: 13px;
@@ -113,7 +130,6 @@
 <body>
 <div class="container">
   <div class="header">
-    <img src="samassa-logo.png" alt="Logo Samassa" class="logo">
     <div class="entreprise-info">
       <strong>SAMASSA TECHNOLOGIE</strong><br>
       Tout pour l'informatique<br>
@@ -122,17 +138,18 @@
       Tél : 00223 77291931<br>
       Email : samassatechnologie10@gmail.com
     </div>
+    <img src="samassa-logo.png" alt="Logo Samassa">
   </div>
 
   <h1>FACTURE</h1>
 
   <div class="facture-details">
-    <p><strong>Facture N° :</strong> <input type="text" value="008"></p>
-    <p><strong>Date :</strong> <input type="date" value="2025-07-30"></p>
+    <p><strong>Facture N° :</strong> <input type="text" value=""></p>
+    <p><strong>Date :</strong> <input type="date" value=""></p>
   </div>
 
   <div class="client">
-    <p><strong>Client :</strong> <input type="text" value="DIABA DIAB MULTI-SERVICE"></p>
+    <p><strong>Client :</strong> <input type="text" value=""></p>
   </div>
 
   <table>
@@ -147,23 +164,23 @@
     </thead>
     <tbody>
       <tr>
-        <td><input type="text" value="Activation de Microsoft Office 2019"></td>
-        <td><input type="number" value="1"></td>
-        <td><input type="text" value="2000 F"></td>
-        <td><input type="text" value="2000 F"></td>
+        <td><input type="text" value=""></td>
+        <td><input type="number" value=""></td>
+        <td><input type="text" value=""></td>
+        <td><input type="text" value=""></td>
         <td><input type="text" value=""></td>
       </tr>
     </tbody>
   </table>
 
   <div class="totaux">
-    <p><strong>Total HT :</strong> <input type="text" value="2000 FCFA"></p>
-    <p><strong>TVA :</strong> <input type="text" value="-"></p>
-    <p><strong>Total TTC :</strong> <input type="text" value="2000 FCFA"></p>
+    <p><strong>Total HT :</strong> <input type="text" value=""></p>
+    <p><strong>TVA :</strong> <input type="text" value=""></p>
+    <p><strong>Total TTC :</strong> <input type="text" value=""></p>
   </div>
 
   <div class="signature">
-    <p>Le Gérant</p>
+    <p><strong><u>Le Gérant</u></strong></p>
     <p><strong>Boussé SAMASSA</strong></p>
   </div>
 
