@@ -5,85 +5,185 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Devis - Samassa Technologie</title>
   <style>
+    @media print {
+      .btn-imprimer {
+        display: none !important;
+      }
+    }
     body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
-      background-color: #f8f8f8;
-    }
-    header {
-      text-align: center;
-      margin-bottom: 40px;
-    }
-    h1 {
-      color: #0466c8;
-    }
-    .devis-box {
-      background: white;
+      font-family: Cambria, serif;
+      margin: 40px;
+      color: #000;
+      width: 210mm;
+      height: 297mm;
       padding: 20px;
-      border-radius: 8px;
-      max-width: 800px;
-      margin: auto;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      box-sizing: border-box;
+      position: relative;
     }
-    label {
-      font-weight: bold;
+    body::before {
+      content: "";
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      width: 500px;
+      height: 500px;
+      background-image: url('samassa-logo.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      opacity: 0.05;
+      transform: translate(-50%, -50%);
+      z-index: 0;
+      pointer-events: none;
     }
-    input, textarea {
+    .container { position: relative; z-index: 1; }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-bottom: 2px solid #000;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+    }
+    .entreprise-info {
+      font-size: 14px;
+      line-height: 1.6;
+      text-align: left;
+    }
+    .header img {
+      max-width: 120px;
+      height: auto;
+      margin-left: auto;
+    }
+    h1 { text-align: center; margin-top: 20px; font-weight: bold; }
+    .devis-details, .client {
+      margin: 20px 0;
+      font-size: 16px;
+    }
+    .devis-details input, .client input {
+      width: 300px;
+      font-size: 16px;
+      padding: 4px;
+    }
+    table {
       width: 100%;
-      padding: 8px;
-      margin-bottom: 12px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
+      border-collapse: collapse;
+      margin-bottom: 30px;
     }
-    button {
+    th, td {
+      border: 1px solid #000;
+      padding: 8px;
+      text-align: left;
+    }
+    th { background-color: #eee; }
+    td input, td textarea {
+      width: 100%;
+      border: none;
+      font-size: 15px;
+      resize: none;
+    }
+    .totaux {
+      text-align: right;
+      font-size: 16px;
+    }
+    .totaux input {
+      font-size: 16px;
+      width: 150px;
+      padding: 4px;
+    }
+    .signature {
+      margin-top: 60px;
+      text-align: right;
+      font-size: 16px;
+    }
+    .signature p:first-child {
+      font-weight: bold;
+      text-decoration: underline;
+    }
+    .footer {
+      margin-top: 60px;
+      font-size: 13px;
+      text-align: center;
+      color: #555;
+    }
+    .btn-imprimer {
+      display: block;
+      margin: 20px auto;
+      padding: 10px 20px;
+      font-size: 16px;
       background-color: #0466c8;
       color: white;
-      padding: 12px 20px;
       border: none;
-      border-radius: 4px;
-      font-size: 16px;
+      border-radius: 5px;
       cursor: pointer;
-      margin-top: 15px;
-    }
-    button:hover {
-      background-color: #0353a4;
-    }
-    .actions {
-      text-align: center;
     }
   </style>
 </head>
 <body>
-
-  <header>
-    <h1>Créer un Devis</h1>
-    <p>Samassa Technologie - Tout pour l'informatique</p>
-  </header>
-
-  <div class="devis-box">
-    <form id="devisForm">
-      <label>Nom du client</label>
-      <input type="text" name="client" required />
-
-      <label>Montant estimé (F CFA)</label>
-      <input type="number" name="montant" required />
-
-      <label>Détails / Services proposés</label>
-      <textarea name="services" rows="5"></textarea>
-
-      <div class="actions">
-  <button type="submit">Générer la facture</button>
-  <button type="button" onclick="window.print()">🖨️ Imprimer / PDF</button>
-</div>
-    </form>
+<div class="container">
+  <div class="header">
+    <div class="entreprise-info">
+      <strong>SAMASSA TECHNOLOGIE</strong><br>
+      Tout pour l'informatique<br>
+      Grand Marché de Kayes, près du 1er arrondissement de la police<br>
+      Rue Soundiata Keita<br>
+      Tél : 00223 77291931<br>
+      Email : samassatechnologie10@gmail.com
+    </div>
+    <img src="samassa-logo.png" alt="Logo Samassa">
   </div>
 
-  <script>
-    document.getElementById("devisForm").addEventListener("submit", function(e) {
-      e.preventDefault();
-      alert("Le devis a été généré (fonction export PDF à venir) !");
-    });
-  </script>
+  <h1>DEVIS</h1>
 
+  <div class="devis-details">
+    <p><strong>Devis N° :</strong> <input type="text" value=""></p>
+    <p><strong>Date :</strong> <input type="date" value=""></p>
+  </div>
+
+  <div class="client">
+    <p><strong>Client :</strong> <input type="text" value=""></p>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Description / Service</th>
+        <th>Quantité</th>
+        <th>Prix Unitaire</th>
+        <th>Total (HT)</th>
+        <th>Remarques</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><textarea rows="2"></textarea></td>
+        <td><input type="number" value=""></td>
+        <td><input type="text" value=""></td>
+        <td><input type="text" value=""></td>
+        <td><input type="text" value=""></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="totaux">
+    <p><strong>Total HT :</strong> <input type="text" value=""></p>
+    <p><strong>TVA :</strong> <input type="text" value=""></p>
+    <p><strong>Total TTC :</strong> <input type="text" value=""></p>
+  </div>
+
+  <div class="signature">
+    <p><strong><u>Le Gérant</u></strong></p>
+    <p><strong>Boussé SAMASSA</strong></p>
+  </div>
+
+  <button class="btn-imprimer" onclick="window.print()">🖨️ Imprimer / Enregistrer en PDF</button>
+
+  <div class="footer">
+    Merci pour votre confiance !<br>
+    Samassa Technologie – Tout pour l’informatique – Grand Marché de Kayes,<br>
+    près du 1er arrondissement de la police – Rue Soundiata Keita<br>
+    Tél : 00223 77291931 – samassatechnologie10@gmail.com
+  </div>
+</div>
 </body>
 </html>
